@@ -8,7 +8,7 @@ import axios from 'axios';
 import { BigNumber, ethers } from 'ethers';
 import { useDropzone } from 'react-dropzone';
 import Skeleton from 'react-loading-skeleton';
-import { ChainId } from '@sushiswap/sdk';
+import { ChainId } from 'hadeswap-beta-sdk';
 import Select from 'react-dropdown-select';
 
 import CloseIcon from '@material-ui/icons/Close';
@@ -219,7 +219,7 @@ const PaintBoard = () => {
       showToast('info', 'Connect your wallet first');
       return;
     }
-    if (chainId !== ChainId.FANTOM && chainId !== ChainId.FANTOM_TESTNET) {
+    if (chainId !== ChainId.MAINNET && chainId !== ChainId.SPARTA) {
       showToast('info', 'You are not connected to Fantom Opera Network');
       return;
     }

@@ -1,4 +1,4 @@
-import { ChainId } from '@sushiswap/sdk';
+import { ChainId } from 'hadeswap-beta-sdk';
 
 import { WFTM_ABI } from './abi';
 import { calculateGasMargin, getHigherGWEI } from 'utils';
@@ -6,13 +6,13 @@ import useContract from 'hooks/useContract';
 import { ethers } from 'ethers';
 
 const WFTM_ADDRESS = {
-  [ChainId.FANTOM]: '0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83',
-  [ChainId.FANTOM_TESTNET]: '0xf1277d1Ed8AD466beddF92ef448A132661956621',
+  [ChainId.MAINNET]: '0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83',
+  [ChainId.SPARTA]: '0xf1277d1Ed8AD466beddF92ef448A132661956621',
 };
 
 // eslint-disable-next-line no-undef
 const isMainnet = process.env.REACT_APP_ENV === 'MAINNET';
-const CHAIN = isMainnet ? ChainId.FANTOM : ChainId.FANTOM_TESTNET;
+const CHAIN = isMainnet ? ChainId.MAINNET : ChainId.SPARTA;
 export const useWFTMContract = () => {
   const { getContract } = useContract();
 

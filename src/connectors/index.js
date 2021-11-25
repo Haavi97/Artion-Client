@@ -1,4 +1,4 @@
-import { ChainId } from '@sushiswap/sdk';
+import { ChainId } from 'hadeswap-beta-sdk';
 import { InjectedConnector } from '@web3-react/injected-connector';
 import { WalletLinkConnector } from '@web3-react/walletlink-connector';
 
@@ -11,29 +11,29 @@ const isMainnet = process.env.REACT_APP_ENV === 'MAINNET';
 
 const RPC = isMainnet
   ? {
-      [ChainId.FANTOM]: 'https://rpc.ftm.tools',
+      [ChainId.MAINNET]: 'https://rpc.polis.tech',
     }
   : {
-      [ChainId.FANTOM_TESTNET]: 'https://rpc.testnet.fantom.network',
+      [ChainId.SPARTA]: 'https://sparta-rpc.polis.tech',
     };
 
 export const network = new NetworkConnector({
-  defaultChainId: ChainId.FANTOM,
+  defaultChainId: ChainId.MAINNET,
   urls: RPC,
 });
 
 export const injected = new InjectedConnector({
   supportedChainIds: isMainnet
     ? [
-        250, // fantom
+        333999, // olympus
       ]
     : [
-        4002, // fantom testnet
+        333888, // sparta
       ],
 });
 
 export const walletlink = new WalletLinkConnector({
-  url: 'https://rpc.ftm.tools',
+  url: 'https://rpc.polis.tech',
   appName: 'Artion',
   appLogoUrl: ARTION_LOGO_URL,
 });

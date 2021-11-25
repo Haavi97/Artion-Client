@@ -9,7 +9,7 @@ import {
 import { Toaster } from 'react-hot-toast';
 import { ethers } from 'ethers';
 import { useWeb3React } from '@web3-react/core';
-import { ChainId } from '@sushiswap/sdk';
+import { ChainId } from 'hadeswap-beta-sdk';
 // import { Client } from '@bandprotocol/bandchain.js';
 
 import ProtectedRoute from './ProtectedRoute';
@@ -34,7 +34,7 @@ const App = () => {
 
   const getPrice = async () => {
     try {
-      if (chainId === ChainId.FANTOM) {
+      if (chainId === ChainId.MAINNET) {
         // const endpoint = 'https://rpc.bandchain.org';
         // const client = new Client(endpoint);
         // const resp = await client.getReferenceData(['FTM/USD', 'BTC/USD']);
@@ -57,7 +57,7 @@ const App = () => {
         const _price = await oracle.latestAnswer();
         const price = parseFloat(_price.toString()) / 10 ** 8;
         dispatch(PriceActions.updatePrice(price));
-      } else if (chainId === ChainId.FANTOM_TESTNET) {
+      } else if (chainId === ChainId.SPARTA) {
         const provider = new ethers.providers.Web3Provider(window.ethereum);
         const oracle = new ethers.Contract(
           '0xe04676B9A9A2973BCb0D1478b5E1E9098BBB7f3D',
@@ -100,10 +100,10 @@ const App = () => {
           <ProtectedRoute exact path="/create" component={PaintBoard} />
           {/* <Route path="/bundle/:bundleID" component={NFTItem} /> */}
           <Route path="/account/:uid" component={AccountDetails} />
-          {/* <ProtectedRoute
+          <ProtectedRoute
             path="/collection/create"
             component={() => <CollectionCreate isRegister={false} />}
-          /> */}
+          />
           <ProtectedRoute
             path="/collection/register"
             component={() => <CollectionCreate isRegister />}

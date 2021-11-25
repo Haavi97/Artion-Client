@@ -1,4 +1,4 @@
-import { ChainId } from '@sushiswap/sdk';
+import { ChainId } from 'hadeswap-beta-sdk';
 
 // import iconFTM from 'assets/imgs/ftm.png';
 import iconWFTM from 'assets/imgs/wftm.png';
@@ -10,7 +10,7 @@ import iconDAI from 'assets/imgs/dai.png';
 const isMainnet = process.env.REACT_APP_ENV === 'MAINNET';
 
 const Tokens = {
-  [ChainId.FANTOM]: [
+  [ChainId.MAINNET]: [
     // {
     //   address: '',
     //   name: 'Fantom',
@@ -47,7 +47,7 @@ const Tokens = {
       icon: iconDAI,
     },
   ],
-  [ChainId.FANTOM_TESTNET]: [
+  [ChainId.SPARTA]: [
     // {
     //   address: '',
     //   name: 'Fantom',
@@ -66,7 +66,7 @@ const Tokens = {
 };
 
 export default function useTokens() {
-  const chain = isMainnet ? ChainId.FANTOM : ChainId.FANTOM_TESTNET;
+  const chain = isMainnet ? ChainId.MAINNET : ChainId.SPARTA;
 
   const tokens = Tokens[chain];
 

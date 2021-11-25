@@ -1,4 +1,4 @@
-import { ChainId } from '@sushiswap/sdk';
+import { ChainId } from 'hadeswap-beta-sdk';
 // import { ethers } from 'ethers';
 
 import { calculateGasMargin, getHigherGWEI } from 'utils';
@@ -9,7 +9,7 @@ import { BUNDLE_SALES_CONTRACT_ABI } from './abi';
 
 // eslint-disable-next-line no-undef
 const isMainnet = process.env.REACT_APP_ENV === 'MAINNET';
-const CHAIN = isMainnet ? ChainId.FANTOM : ChainId.FANTOM_TESTNET;
+const CHAIN = isMainnet ? ChainId.MAINNET : ChainId.SPARTA;
 
 export const useBundleSalesContract = () => {
   const { getContract } = useContract();

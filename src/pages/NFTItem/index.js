@@ -25,7 +25,7 @@ import {
   CartesianGrid,
   Line,
 } from 'recharts';
-import { ChainId } from '@sushiswap/sdk';
+import { ChainId } from 'hadeswap-beta-sdk';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye } from '@fortawesome/free-solid-svg-icons';
 import { useWeb3React } from '@web3-react/core';
@@ -107,7 +107,7 @@ const filters = ['Trade History', 'Transfer History'];
 
 // eslint-disable-next-line no-undef
 const ENV = process.env.REACT_APP_ENV;
-const CHAIN = ENV === 'MAINNET' ? ChainId.FANTOM : ChainId.FANTOM_TESTNET;
+const CHAIN = ENV === 'MAINNET' ? ChainId.MAINNET : ChainId.SPARTA;
 
 const NFTItem = () => {
   const dispatch = useDispatch();
@@ -293,8 +293,8 @@ const NFTItem = () => {
     return (
       account &&
       (ENV === 'MAINNET'
-        ? chainId === ChainId.FANTOM
-        : chainId === ChainId.FANTOM_TESTNET)
+        ? chainId === ChainId.MAINNET
+        : chainId === ChainId.SPARTA)
     );
   };
 
@@ -457,13 +457,6 @@ const NFTItem = () => {
         const response = await axios.get(realUri);
         data = response.data;
       }
-
-      if (data[Object.keys(data)[0]].image) {
-        data.image = getRandomIPFS(data[Object.keys(data)[0]].image);
-        data.name = data[Object.keys(data)[0]].name;
-        data.description = data[Object.keys(data)[0]].description;
-      }
-
       if (data.properties?.royalty) {
         data.properties.royalty = parseInt(data.properties.royalty) / 100;
       }
@@ -3151,7 +3144,7 @@ const NFTItem = () => {
                         {formatNumber(auction.current.reservePrice)}
                         {minBid > 0 &&
                           ` | First Bid
-                        should match reserve price`}
+                          should match reserve price`}
                         )
                       </div>
                     )}
@@ -3599,7 +3592,7 @@ const NFTItem = () => {
                       {history ? (
                         formatNumber(history.value)
                       ) : (
-                        <Skeleton width={100} height={20} />
+                        <Skeleton kwidth={100} height={20} />
                       )}
                     </div>
                   )}
