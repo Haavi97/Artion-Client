@@ -82,8 +82,7 @@ const ConnectWalletModal = ({ visible, onClose }) => {
       return (
         <div>
           <div className={styles.text}>
-            Please connect to the{' '}
-            {isMainnet ? 'Fantom Opera' : 'Sparta Testnet'}.
+            Please connect to the {isMainnet ? 'Olympus' : 'Sparta Testnet'}.
           </div>
           <div className={styles.switchBtn} onClick={deactivate}>
             Disconnect

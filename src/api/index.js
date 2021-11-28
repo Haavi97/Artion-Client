@@ -8,7 +8,9 @@ export const useApi = () => {
     ? 'https://ftmscan.com'
     : 'https://testnet.ftmscan.com';
 
-  const apiUrl = isMainnet ? 'https://api.artion.io' : 'https://localhost:5001';
+  const apiUrl = isMainnet
+    ? 'https://localhost:5001'
+    : 'https://localhost:5001';
 
   // eslint-disable-next-line no-undef
   // const apiUrl = process.env.REACT_APP_API_URI;
