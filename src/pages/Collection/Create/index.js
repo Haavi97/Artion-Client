@@ -280,6 +280,8 @@ const CollectionCreate = ({ isRegister }) => {
 
             signature = await signer.signMessage(msg);
             signatureAddress = ethers.utils.verifyMessage(msg, signature);
+            console.log('Signature: ' + signature);
+            console.log('signatureAddress: ' + signatureAddress);
           } catch (err) {
             toast(
               'error',
@@ -304,6 +306,7 @@ const CollectionCreate = ({ isRegister }) => {
           });
 
           const logoImageHash = result.data.data;
+          console.log('logoImageHash: ' + logoImageHash);
           const data = {
             email,
             erc721Address: address,
@@ -322,6 +325,7 @@ const CollectionCreate = ({ isRegister }) => {
             royalty,
             feeRecipient,
           };
+          console.log(data);
 
           await axios({
             method: 'post',

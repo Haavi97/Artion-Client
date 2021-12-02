@@ -8,9 +8,7 @@ export const useApi = () => {
     ? 'https://ftmscan.com'
     : 'https://testnet.ftmscan.com';
 
-  const apiUrl = isMainnet
-    ? 'https://localhost:5001'
-    : 'https://localhost:5001';
+  const apiUrl = isMainnet ? 'http://localhost:5001' : 'http://localhost:5001';
 
   // eslint-disable-next-line no-undef
   // const apiUrl = process.env.REACT_APP_API_URI;
@@ -402,6 +400,12 @@ export const useApi = () => {
     signatureAddress
   ) => {
     const data = { name, address, signature, signatureAddress };
+    console.log('Trying to add moderator');
+    // console.log(name);
+    // console.log(address);
+    // console.log(signature);
+    // console.log(signatureAddress);
+    // console.log(authToken);
     const res = await axios({
       method: 'post',
       url: `${apiUrl}/mod/add`,

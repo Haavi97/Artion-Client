@@ -220,7 +220,7 @@ const PaintBoard = () => {
       return;
     }
     if (chainId !== ChainId.MAINNET && chainId !== ChainId.SPARTA) {
-      showToast('info', 'You are not connected to Fantom Opera Network');
+      showToast('info', 'You are not connected to Olympus Network: ');
       return;
     }
     const balance = await WalletUtils.checkBalance(account);
