@@ -5,8 +5,8 @@ const isMainnet = process.env.REACT_APP_ENV === 'MAINNET';
 
 export const useApi = () => {
   const explorerUrl = isMainnet
-    ? 'https://ftmscan.com'
-    : 'https://testnet.ftmscan.com';
+    ? 'https://explorer.polis.tech'
+    : 'https://sparta-explorer.polis.tech';
 
   const apiUrl = isMainnet ? 'http://localhost:5001' : 'http://localhost:5001';
 
@@ -401,11 +401,6 @@ export const useApi = () => {
   ) => {
     const data = { name, address, signature, signatureAddress };
     console.log('Trying to add moderator');
-    // console.log(name);
-    // console.log(address);
-    // console.log(signature);
-    // console.log(signatureAddress);
-    // console.log(authToken);
     const res = await axios({
       method: 'post',
       url: `${apiUrl}/mod/add`,

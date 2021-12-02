@@ -1,4 +1,5 @@
 import { ChainId } from 'hadeswap-beta-sdk';
+// import { ethers } from 'ethers';
 
 import { calculateGasMargin, getHigherGWEI } from 'utils';
 import { Contracts } from 'constants/networks';
@@ -151,7 +152,7 @@ export const useSalesContract = () => {
   const registerRoyalty = async (nftAddress, tokenId, royalty) => {
     const contract = await getSalesContract();
     const options = {
-      gasPrice: getHigherGWEI(),
+      gasPrice: await getHigherGWEI(),
     };
 
     return await contract.registerRoyalty(

@@ -293,7 +293,6 @@ const PaintBoard = () => {
       console.log('upload image result is ');
 
       const jsonHash = result.data.jsonHash;
-
       const contract = await loadContract(
         nft,
         type === 721 ? SINGLE_NFT_ABI : MULTI_NFT_ABI
@@ -309,7 +308,7 @@ const PaintBoard = () => {
         } else {
           const options = {
             value: ethers.utils.parseEther(fee.toString()),
-            gasPrice: getHigherGWEI(),
+            gasPrice: await getHigherGWEI(),
           };
           const gasEstimate = await contract.estimateGas.mint(...args, options);
           options.gasLimit = calculateGasMargin(gasEstimate);
