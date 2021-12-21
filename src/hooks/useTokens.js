@@ -1,24 +1,12 @@
 import { ChainId } from 'hadeswap-beta-sdk';
 
-// import iconFTM from 'assets/imgs/ftm.png';
 import iconWPOLIS from 'assets/svgs/wpolis.svg';
-import iconWFTM from 'assets/imgs/wftm.png';
-// import iconUSDT from 'assets/imgs/usdt.png';
-// import iconUSDC from 'assets/imgs/usdc.png';
-// import iconDAI from 'assets/imgs/dai.png';
 
 // eslint-disable-next-line no-undef
 const isMainnet = process.env.REACT_APP_ENV === 'MAINNET';
 
 const Tokens = {
   [ChainId.MAINNET]: [
-    // {
-    //   address: '',
-    //   name: 'Fantom',
-    //   symbol: 'FTM',
-    //   decimals: 18,
-    //   icon: iconFTM,
-    // },
     {
       address: '0x6FC851B8D66116627Fb1137b9D5FE4E2e1BeA978',
       name: 'Wrapped Polis',
@@ -26,49 +14,21 @@ const Tokens = {
       decimals: 18,
       icon: iconWPOLIS,
     },
-    // {
-    //   address: '0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83',
-    //   name: 'Wrapped Fantom',
-    //   symbol: 'WFTM',
-    //   decimals: 18,
-    //   icon: iconWFTM,
-    // },
-    // {
-    //   address: '0x049d68029688eabf473097a2fc38ef61633a3c7a',
-    //   name: 'Tether USD',
-    //   symbol: 'fUSDT',
-    //   decimals: 6,
-    //   icon: iconUSDT,
-    // },
-    // {
-    //   address: '0x04068DA6C83AFCFA0e13ba15A6696662335D5B75',
-    //   name: 'USD Coin',
-    //   symbol: 'USDC',
-    //   decimals: 6,
-    //   icon: iconUSDC,
-    // },
-    // {
-    //   address: '0x8D11eC38a3EB5E956B052f67Da8Bdc9bef8Abf3E',
-    //   name: 'Dai Stablecoin',
-    //   symbol: 'DAI',
-    //   decimals: 18,
-    //   icon: iconDAI,
-    // },
+    {
+      address: '0x0000000000000000000000000000000000000000',
+      name: 'Polis',
+      symbol: 'POLIS',
+      decimals: 18,
+      icon: iconWPOLIS,
+    },
   ],
   [ChainId.SPARTA]: [
-    // {
-    //   address: '',
-    //   name: 'Fantom',
-    //   symbol: 'FTM',
-    //   decimals: 18,
-    //   icon: iconFTM,
-    // },
     {
-      address: '0xf1277d1ed8ad466beddf92ef448a132661956621',
-      name: 'Wrapped Fantom',
-      symbol: 'WFTM',
+      address: '0x6FC851B8D66116627Fb1137b9D5FE4E2e1BeA978',
+      name: 'Wrapped Polis',
+      symbol: 'WPOLIS',
       decimals: 18,
-      icon: iconWFTM,
+      icon: iconWPOLIS,
     },
   ],
 };
