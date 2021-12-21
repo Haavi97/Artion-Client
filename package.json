@@ -128,7 +128,7 @@
         "hadeswap-beta-sdk": "1.4.4"
     },
     "scripts": {
-        "start": "react-app-rewired start",
+        "start": "title Artion-Client && react-app-rewired start",
         "build": "react-app-rewired build"
     },
     "eslintConfig": {

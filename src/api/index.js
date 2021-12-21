@@ -153,7 +153,7 @@ export const useApi = () => {
   };
 
   const fetchCollections = async () => {
-    const res = await axios.get(`${apiUrl}/info/getcollections`);
+    const res = await axios.get(`${apiUrl}/info/getCollections`);
     return res.data;
   };
 
