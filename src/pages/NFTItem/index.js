@@ -2816,11 +2816,11 @@ const NFTItem = () => {
         </div>
         <div className={styles.panelLine}>
           <div className={styles.panelLabel}>Network</div>
-          <div className={styles.panelValue}>Fantom Opera</div>
+          <div className={styles.panelValue}>Olympus</div>
         </div>
         <div className={styles.panelLine}>
           <div className={styles.panelLabel}>Chain ID</div>
-          <div className={styles.panelValue}>250</div>
+          <div className={styles.panelValue}>333999</div>
         </div>
       </div>
     </Panel>
