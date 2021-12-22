@@ -329,7 +329,7 @@ const Header = ({ border }) => {
       </div>
       <div className={styles.menuItem} onClick={openWrapStation}>
         <img src={iconSwap} className={styles.menuIcon} />
-        FTM / WFTM Station
+        POLIS / WPOLIS Station
       </div>
 
       <div className={styles.menuSeparator} />

@@ -6,8 +6,8 @@ import useContract from 'hooks/useContract';
 import { ethers } from 'ethers';
 
 const WFTM_ADDRESS = {
-  [ChainId.MAINNET]: '0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83',
-  [ChainId.SPARTA]: '0xf1277d1Ed8AD466beddF92ef448A132661956621',
+  [ChainId.MAINNET]: '0x6FC851B8D66116627Fb1137b9D5FE4E2e1BeA978',
+  [ChainId.SPARTA]: '',
 };
 
 // eslint-disable-next-line no-undef

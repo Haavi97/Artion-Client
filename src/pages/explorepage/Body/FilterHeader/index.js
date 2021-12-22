@@ -70,7 +70,7 @@ const ExploreFilterHeader = ({ loading, category }) => {
             <img
               className="filterCollectionItemLogo"
               src={
-                item.isVerified
+                item.isVerified && item.logoImageHash
                   ? `${getRandomIPFS('', true)}${item.logoImageHash}`
                   : nftActiveIcon
               }
