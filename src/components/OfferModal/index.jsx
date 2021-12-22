@@ -4,11 +4,13 @@ import 'react-datetime/css/react-datetime.css';
 import { ClipLoader } from 'react-spinners';
 import Select from 'react-dropdown-select';
 import Skeleton from 'react-loading-skeleton';
-import { ethers } from 'ethers';
+// import { ethers } from 'ethers';
+
+import hadesData from 'hadeswap-beta-data';
 
 import { formatNumber } from 'utils';
 import useTokens from 'hooks/useTokens';
-import { useSalesContract } from 'contracts';
+// import { useSalesContract } from 'contracts';
 import PriceInput from 'components/PriceInput';
 
 import Modal from '../Modal';
@@ -23,7 +25,6 @@ const OfferModal = ({
   totalSupply,
 }) => {
   const { tokens } = useTokens();
-  const { getSalesContract } = useSalesContract();
 
   const [price, setPrice] = useState('');
   const [quantity, setQuantity] = useState('1');
@@ -56,12 +57,13 @@ const OfferModal = ({
   const getTokenPrice = () => {
     if (tokenPriceInterval) clearInterval(tokenPriceInterval);
     const func = async () => {
-      const tk = selected[0].address || ethers.constants.AddressZero;
+      // const tk = selected[0].address || ethers.constants.AddressZero;
       try {
-        const salesContract = await getSalesContract();
-        const price = await salesContract.getPrice(tk);
-        setTokenPrice(parseFloat(ethers.utils.formatUnits(price, 18)));
-      } catch {
+        // const salesContract = await getSalesContract();
+        // const price = await salesContract.getPrice(tk);
+        const price = await hadesData.exchange.ethPrice();
+        setTokenPrice(parseFloat(price));
+      } catch (err) {
         setTokenPrice(null);
       }
     };
