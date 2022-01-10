@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
 import cx from 'classnames';
 import { ethers } from 'ethers';
 import { ClipLoader } from 'react-spinners';
@@ -7,8 +6,9 @@ import { useWeb3React } from '@web3-react/core';
 import Skeleton from 'react-loading-skeleton';
 import SwapVertIcon from '@material-ui/icons/SwapVert';
 import toast from 'react-hot-toast';
-import InputError from '../InputError';
+import hadesData from 'hadeswap-beta-data';
 
+import InputError from '../InputError';
 import { useWFTMContract } from 'contracts';
 import PriceInput from 'components/PriceInput';
 import showToast from 'utils/toast';
@@ -30,8 +30,8 @@ const WFTMModal = ({ visible, onClose }) => {
   const [wrap, setWrap] = useState(true);
   const [amount, setAmount] = useState('');
   const [inputError, setInputError] = useState(null);
-
-  const { price } = useSelector(state => state.Price);
+  const [tokenPrice, setTokenPrice] = useState();
+  const [tokenPriceInterval, setTokenPriceInterval] = useState();
 
   const getBalances = async (overrideLoading = false) => {
     if (!overrideLoading) {
@@ -95,6 +95,25 @@ const WFTMModal = ({ visible, onClose }) => {
       getBalances();
     }
   }, [visible, chainId]);
+
+  const getTokenPrice = () => {
+    if (tokenPriceInterval) clearInterval(tokenPriceInterval);
+    const func = async () => {
+      try {
+        const price = await hadesData.exchange.ethPrice();
+        setTokenPrice(parseFloat(price));
+      } catch (err) {
+        setTokenPrice(null);
+      }
+    };
+    func();
+    setTokenPriceInterval(setInterval(func, 60 * 1000));
+  };
+  useEffect(() => {
+    if (amount === 0) return;
+
+    getTokenPrice();
+  }, [amount]);
 
   const parseBalance = bal => {
     return bal.toFixed(4);
@@ -214,7 +233,10 @@ const WFTMModal = ({ visible, onClose }) => {
                 onInputError={setInputError}
               />
               <div className={styles.usdVal}>
-                ${formatNumber(((parseFloat(amount) || 0) * price).toFixed(2))}
+                $
+                {formatNumber(
+                  ((parseFloat(amount) || 0) * tokenPrice).toFixed(2)
+                )}
               </div>
             </div>
           </div>
@@ -241,14 +263,17 @@ const WFTMModal = ({ visible, onClose }) => {
             <div className={styles.rightBox}>
               <PriceInput
                 className={styles.input}
-                placeholder="0.0"
+                placeholder="0.00"
                 decimals={18}
                 value={'' + amount}
                 onChange={setAmount}
                 onInputError={setInputError}
               />
               <div className={styles.usdVal}>
-                ${formatNumber(((parseFloat(amount) || 0) * price).toFixed(2))}
+                $
+                {formatNumber(
+                  ((parseFloat(amount) || 0) * tokenPrice).toFixed(2)
+                )}
               </div>
             </div>
           </div>
