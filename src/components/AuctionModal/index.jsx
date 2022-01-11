@@ -95,10 +95,7 @@ const AuctionModal = ({
   const getTokenPrice = () => {
     if (tokenPriceInterval) clearInterval(tokenPriceInterval);
     const func = async () => {
-      // const tk = selected[0].address || ethers.constants.AddressZero;
       try {
-        // const salesContract = await getSalesContract();
-        // const price = await salesContract.getPrice(tk);
         const price = await hadesData.exchange.ethPrice();
         setTokenPrice(parseFloat(price));
       } catch (err) {
